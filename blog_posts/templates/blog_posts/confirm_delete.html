@@ -1,0 +1,13 @@
+{% extends "blog_posts/base.html" %}
+{% block title %}Delete Confirmation{% endblock title %}
+{% block content %}
+    {% include "blog_posts/navbar.html" %}
+    <div class="container">
+        <h2>Are you sure you want to delete ?<p class="text-muted">Blog-<i>"{{object}}"</i></p></h2>
+        <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Yes,Delete</button>
+                <a href="{%url 'blog_posts:home'%}" class="btn btn-outline-info">Cancel</a>
+            </form>
+    </div>
+{% endblock content %}

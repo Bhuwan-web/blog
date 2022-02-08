@@ -1,0 +1,35 @@
+<section class="blogs_container">
+        {% for blog in blogs %}
+        <article class="blog container mb-3 py-3 rounded d-flex">
+            <div class="profile me-3">
+                <img  width=50 class="rounded-circle" src="{{blog.author.profile.profile_pic.url}}" alt="User Profile">
+            </div>
+            <div>
+                <header class="blog__header">
+                    <h3 class="blog__header--title text-center text-lg-start">{{blog.title}}</h3>
+                    <div class="d-flex  justify-content-between border-bottom mb-2">
+                        <div class="blog__header--author ">
+                            <a href="{%url 'profile:profile' blog.author.id %}"
+                            class="text-dark text-decoration-none">
+                                {{blog.author}}
+                            </a>
+                        </div>
+                        <div class="blog__header--pubdate">{{blog.published_at}}</div>
+                    </div>
+                </header>
+                    <div class="blog__content ">
+                        {{blog.content|truncatewords:30}}
+                        <a href="{% url 'blog_posts:blog' blog.id %}" class="blog__content--extend">Read More</a>
+                    </div>
+                    <div class="blog__footer mt-2">
+                        Like,Share
+                    </div>
+            </div>
+    </article>
+    {% endfor %}
+
+
+    {% if paginator %}
+        {% include "blog_posts/pagination.html" %}
+    {% endif %}
+</section>

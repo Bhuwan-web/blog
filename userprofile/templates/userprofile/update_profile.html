@@ -1,0 +1,20 @@
+{% extends 'blog_posts/base.html' %}
+{% block title %}Profile-{{user.username}}{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% include "blog_posts/navbar.html" %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group mb-3">
+            <legend class="mb-4 border-bottom">
+                Update Info
+            </legend>
+            {{u_form|crispy}}
+            {{p_form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info mt-2" type="submit">Update</button>
+        </div>
+    </form>
+
+{% endblock content%}

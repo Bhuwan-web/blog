@@ -1,0 +1,32 @@
+.blogs_container{
+
+    max-width: 60%;
+}
+.blog{
+    background-color: #f7f7f7;
+    border-radius: 10px;;
+}
+.blog__content--extend{
+    cursor:pointer;
+}
+
+.aside{
+    padding:2rem;
+}
+.aside__navbar{
+    background-color:#f0f0f0;
+    border-radius: 0.5rem;
+}
+
+
+.footer{
+    padding:0.36rem;
+    background: #333;
+    color:#ccc;
+}
+.blog_body{
+    min-height:94.4vh;
+}
+.footer{
+    min-height:4vh;
+}

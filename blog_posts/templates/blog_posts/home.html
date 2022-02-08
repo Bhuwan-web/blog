@@ -1,0 +1,40 @@
+{% extends 'blog_posts/base.html' %} 
+{% block title %} Django Blog{% endblock title %}
+
+{% block content %}
+{% include "blog_posts/navbar.html" %}
+    {% if user.is_authenticated %}
+        <div class="btn btn-info">
+            <a href="{% url 'blog_posts:create' %}" 
+            class="text-reset text-decoration-none">
+            Add Blog
+            </a>
+        </div>
+    {% else %}
+        <a class="btn btn-secondary btn-lg disabled"
+        role="button"
+        aria-disabled="true">
+        Add Post</a>
+    {% endif %}
+
+<div class="body-part d-flex justify-content-between mt-5">
+
+    {% include "blog_posts/blogs.html" %}
+
+    <aside class="aside">
+            <div class="container aside__navbar px-3 py-2">
+                <header>
+                    <h4>Aside Components</h4>
+                </header>
+                <ul>
+                    <li class="aside-lists">Rececnt Posts</li>
+                    <li class="aside-lists">Most Popular</li>
+                    <li class="aside-lists">Categories</li>
+                </ul>
+            </div>
+    </aside>
+</div>
+
+
+
+{% endblock content %} 

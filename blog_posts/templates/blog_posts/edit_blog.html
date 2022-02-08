@@ -1,0 +1,18 @@
+{% extends "blog_posts/base.html" %}
+{% block title %}{{blog.title}}{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% include "blog_posts/navbar.html" %}
+    <form method="post">
+        {% csrf_token %}
+        <filedset class="form-group">
+            <legend class="border-bottom">
+                Blog Post
+            </legend>
+            {{form|crispy}}
+        </filedset>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-info">Update</button>
+        </div>
+    </form>
+{% endblock content %}

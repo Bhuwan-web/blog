@@ -1,0 +1,36 @@
+{% extends "blog_posts/base.html" %}
+{% block content %}
+{% include "blog_posts/navbar.html" %}
+    <div class="container">
+        <header class="blog_header">
+            <h2 class="display-4 text-center">
+                {{blog.title}}
+            </h2>
+            <div class="sub-sec d-flex justify-content-between mb-3 fs-5 border-bottom">
+                <div>
+                    <a href="{%url 'profile:profile' blog.id%}" class="text-decoration-none text-dark">{{blog.author}}</a>
+                </div>
+                <div>
+                    {{blog.published_at}}
+                </div>
+            </div>
+        </header>
+        <main class="fs-4">
+            {{blog.content}}
+        </main>
+        {% if user == blog.author  %}
+            <aside class="text-left my-3">
+                    <a 
+                        href="{% url 'blog_posts:edit' blog.id %}"
+                        class="btn btn-info text-white text-decoration-none">
+                        Edit
+                    </a>
+                    <a 
+                        href="{% url 'blog_posts:delete' blog.id %}" 
+                        class="btn btn-danger text-white text-decoration-none">
+                        Delete
+                    </a>
+            </aside>
+        {% endif %}
+    </div>
+{% endblock content %}
