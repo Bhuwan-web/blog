@@ -10,8 +10,8 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user}'s Profile"
 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
         img_path = self.profile_pic.path
         img = Image.open(img_path)
         if img.height > 300 or img.width > 300:
